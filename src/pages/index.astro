@@ -1,0 +1,28 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Be Right Back Screen</title>
+    <script>
+      const time = document.getElementById('time')!;
+      let currentTime = 4 * 60;
+      const interval = setInterval(() => {
+        currentTime--;
+        const minutes = Math.floor(currentTime / 60);
+        const seconds = currentTime % 60;
+        time.innerText = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        if (currentTime === 0) clearInterval(interval);
+      }, 1000);
+    </script>
+  </head>
+  <body class="h-screen w-screen grid place-content-center bg-[#00ff00] font-mono">
+    <div
+      class="w-[50vw] bg-white rounded-3xl shadow-lg p-8 text-center flex flex-col justify-center items-center gap-8"
+    >
+      <h1 class="text-5xl font-black">Be Right Back</h1>
+      <p class="text-7xl font-light" id="time">4:00</p>
+    </div>
+  </body>
+</html>
